@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Génesis - Experiencia 5 Estrellas</title>
+    <title>Hotel Genésis STB - Experiencia 5 Estrellas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset y estilos generales */
@@ -14,23 +14,37 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        :root {
+            --primary-color: #c19a6b;
+            --primary-dark: #a8845a;
+            --dark-color: #1a1a1a;
+            --light-color: #f8f9fa;
+            --white: #ffffff;
+            --gray: #666;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+        }
+
         body {
-            background-color: #f8f9fa;
+            background-color: var(--light-color);
             color: #333;
             line-height: 1.6;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         .container {
-            width: 90%;
+            width: 92%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
 
         /* Hero Section - 30% de la pantalla */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=600&q=80') no-repeat center center/cover;
             height: 30vh;
+            min-height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -46,15 +60,16 @@
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             font-weight: 300;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: 1.5rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             font-weight: 300;
@@ -62,8 +77,8 @@
 
         .btn {
             display: inline-block;
-            background-color: #c19a6b;
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--white);
             padding: 0.8rem 1.8rem;
             border-radius: 30px;
             text-decoration: none;
@@ -72,25 +87,26 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            text-align: center;
         }
 
         .btn:hover {
-            background-color: #a8845a;
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
         }
 
         .btn-whatsapp {
-            background-color: #25D366;
+            background-color: var(--whatsapp);
         }
 
         .btn-whatsapp:hover {
-            background-color: #128C7E;
+            background-color: var(--whatsapp-dark);
         }
 
         /* Menú de Navegación */
         .main-menu {
-            background-color: #1a1a1a;
-            padding: 1.5rem 0;
+            background-color: var(--dark-color);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -104,9 +120,9 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
             font-weight: bold;
-            color: #c19a6b;
+            color: var(--primary-color);
             display: flex;
             align-items: center;
         }
@@ -116,7 +132,11 @@
         }
 
         .logo span {
-            color: white;
+            color: var(--white);
+        }
+
+        nav {
+            position: relative;
         }
 
         nav ul {
@@ -125,66 +145,69 @@
         }
 
         nav ul li {
-            margin-left: 1.5rem;
+            margin-left: 1rem;
         }
 
         nav ul li a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
             display: flex;
             align-items: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         nav ul li a i {
-            margin-right: 0.5rem;
-            font-size: 1.1rem;
+            margin-right: 0.3rem;
+            font-size: 1rem;
         }
 
         nav ul li a:hover {
-            color: #c19a6b;
+            color: var(--primary-color);
         }
 
         .reserva-whatsapp {
-            background-color: #25D366;
+            background-color: var(--whatsapp);
             padding: 0.5rem 1rem;
             border-radius: 30px;
-            margin-left: 1.5rem;
+            margin-left: 1rem;
             transition: background-color 0.3s;
         }
 
         .reserva-whatsapp:hover {
-            background-color: #128C7E;
+            background-color: var(--whatsapp-dark);
         }
 
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: white;
+            color: var(--white);
+            background: none;
+            border: none;
         }
 
         /* Secciones de Servicios */
         .service-section {
-            padding: 5rem 0;
+            padding: 3rem 0;
         }
 
         .service-section:nth-child(even) {
-            background-color: #fff;
+            background-color: var(--white);
         }
 
         .service-section:nth-child(odd) {
-            background-color: #f8f9fa;
+            background-color: var(--light-color);
         }
 
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            margin-bottom: 2rem;
             position: relative;
             display: inline-block;
-            color: #1a1a1a;
+            color: var(--dark-color);
             text-align: center;
             width: 100%;
             font-weight: 300;
@@ -198,42 +221,43 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: #c19a6b;
+            background-color: var(--primary-color);
         }
 
         .section-subtitle {
             text-align: center;
-            margin-bottom: 3rem;
-            color: #666;
+            margin-bottom: 2rem;
+            color: var(--gray);
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
         }
 
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .card-img {
-            height: 200px;
+            height: 180px;
             overflow: hidden;
             position: relative;
         }
@@ -256,65 +280,70 @@
         }
 
         .card:hover .card-img img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .card-content {
-            padding: 1.8rem;
+            padding: 1.5rem;
             position: relative;
         }
 
         .card-icon {
             position: absolute;
-            top: -25px;
-            left: 1.8rem;
-            width: 50px;
-            height: 50px;
-            background-color: #c19a6b;
+            top: -20px;
+            left: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            color: var(--white);
+            font-size: 1.2rem;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
             margin-top: 0.5rem;
+            line-height: 1.3;
         }
 
         .card p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .card-features {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .card-features li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             color: #555;
             display: flex;
-            align-items: center;
-        }
-
-        .card-features li i {
-            color: #c19a6b;
-            margin-right: 0.5rem;
+            align-items: flex-start;
             font-size: 0.9rem;
         }
 
+        .card-features li i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
         .card-price {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #c19a6b;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
@@ -330,32 +359,43 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
+            overflow-y: auto;
         }
 
         .modal-content {
-            background-color: white;
-            padding: 2.5rem;
+            background-color: var(--white);
+            padding: 1.5rem;
             border-radius: 15px;
-            width: 90%;
+            width: 100%;
             max-width: 500px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
             animation: modalFadeIn 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-50px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-close {
             position: absolute;
             top: 15px;
-            right: 20px;
+            right: 15px;
             font-size: 1.5rem;
             cursor: pointer;
             color: #888;
             transition: color 0.3s;
+            background: none;
+            border: none;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-close:hover {
@@ -363,19 +403,21 @@
         }
 
         .modal h2 {
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
+            margin-bottom: 1.2rem;
+            color: var(--dark-color);
             text-align: center;
+            font-size: 1.5rem;
         }
 
         .modal p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             text-align: center;
-            color: #666;
+            color: var(--gray);
+            font-size: 0.95rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .form-group label {
@@ -383,6 +425,7 @@
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: #333;
+            font-size: 0.95rem;
         }
 
         .form-group input,
@@ -394,12 +437,13 @@
             border-radius: 5px;
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: inherit;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
-            border-color: #c19a6b;
+            border-color: var(--primary-color);
             outline: none;
         }
 
@@ -419,9 +463,9 @@
 
         .whatsapp-info {
             background-color: #f0f8f0;
-            border-left: 4px solid #25D366;
+            border-left: 4px solid var(--whatsapp);
             padding: 1rem;
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
             border-radius: 5px;
         }
 
@@ -429,13 +473,15 @@
             margin: 0;
             text-align: left;
             color: #333;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* Footer */
         footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 3rem 0 2rem;
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 2.5rem 0 1.5rem;
         }
 
         .footer-content {
@@ -445,12 +491,13 @@
         }
 
         .footer-logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: #c19a6b;
+            color: var(--primary-color);
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
+            text-align: center;
         }
 
         .footer-logo i {
@@ -461,34 +508,34 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
+            gap: 0.8rem;
         }
 
         .footer-links a {
-            color: white;
-            margin: 0 1rem;
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s;
             font-size: 0.9rem;
         }
 
         .footer-links a:hover {
-            color: #c19a6b;
+            color: var(--primary-color);
         }
 
         .social-icons {
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
         }
 
         .social-icons a {
-            color: white;
+            color: var(--white);
             font-size: 1.3rem;
-            margin: 0 0.7rem;
+            margin: 0 0.5rem;
             transition: color 0.3s;
         }
 
         .social-icons a:hover {
-            color: #c19a6b;
+            color: var(--primary-color);
         }
 
         .contact-info {
@@ -497,31 +544,38 @@
             justify-content: center;
             margin: 1rem 0;
             text-align: center;
+            gap: 1rem;
         }
 
         .contact-item {
-            margin: 0 1.5rem 1rem;
             display: flex;
             align-items: center;
+            font-size: 0.9rem;
         }
 
         .contact-item i {
-            color: #c19a6b;
+            color: var(--primary-color);
             margin-right: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .copyright {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             color: #888;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-align: center;
             border-top: 1px solid #333;
-            padding-top: 1.5rem;
+            padding-top: 1.2rem;
             width: 100%;
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .cards-container {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -531,14 +585,16 @@
                 position: fixed;
                 top: 0;
                 left: -100%;
-                width: 70%;
+                width: 80%;
                 height: 100vh;
-                background-color: #1a1a1a;
+                background-color: var(--dark-color);
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                align-items: flex-start;
+                justify-content: flex-start;
                 transition: left 0.3s;
                 z-index: 1000;
+                padding: 5rem 2rem 2rem;
+                overflow-y: auto;
             }
 
             nav ul.show {
@@ -546,34 +602,83 @@
             }
 
             nav ul li {
-                margin: 1.5rem 0;
+                margin: 1rem 0;
+                width: 100%;
+            }
+
+            nav ul li a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+                width: 100%;
             }
 
             .reserva-whatsapp {
                 margin-left: 0;
                 margin-top: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
+                text-align: center;
+                width: 100%;
+                padding: 0.8rem;
             }
 
             .cards-container {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
-            
+
             .contact-info {
                 flex-direction: column;
                 align-items: center;
+                gap: 0.8rem;
             }
 
             .form-row {
                 flex-direction: column;
                 gap: 0;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .service-section {
+                padding: 2.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 0 0.5rem;
+            }
+
+            .hero {
+                min-height: 220px;
+            }
+
+            .hero-content {
+                padding: 0.5rem;
+            }
+
+            .card-content {
+                padding: 1.2rem;
+            }
+
+            .modal-content {
+                padding: 1.2rem;
+            }
+
+            .section-title {
+                margin-bottom: 1.5rem;
+            }
+
+            .section-subtitle {
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-logo {
+                font-size: 1.6rem;
             }
         }
 
@@ -584,8 +689,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background-color: #c19a6b;
+            height: 4px;
+            background-color: var(--primary-color);
             transform: scaleX(0);
             transition: transform 0.3s;
         }
@@ -597,23 +702,24 @@
         /* Botón volver arriba */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #c19a6b;
-            color: white;
-            width: 50px;
-            height: 50px;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
             opacity: 0;
             visibility: hidden;
             z-index: 99;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: none;
         }
 
         .back-to-top.show {
@@ -622,39 +728,40 @@
         }
 
         .back-to-top:hover {
-            background-color: #a8845a;
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
         }
 
         /* Botón flotante de WhatsApp */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--whatsapp);
+            color: var(--white);
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             cursor: pointer;
             transition: all 0.3s;
             z-index: 99;
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
             animation: pulse 2s infinite;
+            border: none;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
 
         .whatsapp-float:hover {
-            background-color: #128C7E;
+            background-color: var(--whatsapp-dark);
             transform: scale(1.1);
         }
 
@@ -662,11 +769,11 @@
             position: absolute;
             background-color: #333;
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 5px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             white-space: nowrap;
-            left: 70px;
+            left: 65px;
             opacity: 0;
             transition: opacity 0.3s;
             pointer-events: none;
@@ -675,24 +782,39 @@
         .whatsapp-float:hover .whatsapp-tooltip {
             opacity: 1;
         }
+
+        /* Mejoras de accesibilidad */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Mejora de enfoque para accesibilidad */
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
     <!-- Hero Section (30% de la pantalla) -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Hotel Génesis</h1>
+            <h1>Hotel Genésis STB</h1>
             <p>Experimente el lujo en su máxima expresión</p>
-            <a href="#habitaciones" class="btn">Descubrir Servicios</a> 
-            <a href="#" class="btn btn-whatsapp" id="openReservaModal"><i class="fab fa-whatsapp"></i> Reservar por WhatsApp</a>
+            <!-- Se eliminaron los botones del hero como se solicitó -->
         </div>
     </section>
 
     <!-- Menú de Navegación -->
     <div class="main-menu">
         <div class="container menu-container">
-            <div class="logo"><i class="fas fa-crown"></i> Hotel&nbsp </span><span> Génesis</span></div>
-            <div class="menu-toggle">☰</div>
+            <div class="logo"><i class="fas fa-crown"></i>Hotel Genésis&nbsp<span>STB</span></div>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
             <nav>
                 <ul>
                     <li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
@@ -710,7 +832,7 @@
     <!-- Modal de Reserva WhatsApp -->
     <div class="modal" id="reservaModal">
         <div class="modal-content">
-            <span class="modal-close" id="closeReservaModal">&times;</span>
+            <button class="modal-close" id="closeReservaModal" aria-label="Cerrar modal">&times;</button>
             <h2><i class="fab fa-whatsapp"></i> Reserva por WhatsApp</h2>
             <p>Complete el formulario y será redirigido a WhatsApp para finalizar su reserva.</p>
             
@@ -1355,21 +1477,21 @@
     <footer id="contacto">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo"><i class="fas fa-crown"></i>Hotel Génesis</div>
+                <div class="footer-logo"><i class="fas fa-crown"></i>Hotel Genésis STB</div>
                 <p>El arte de la hospitalidad en un entorno de lujo</p>
                 
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Avenida 5 de Julio, Santa Bárbara del Zulia</span>
+                        <span>Avenida del Lujo 123, Ciudad Premium</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <span>+58 (412) 16570517</span>
+                        <span>+1 (555) 123-4567</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>alfredogarciamatos@gmail.com</span>
+                        <span>reservas@genesisstb.com</span>
                     </div>
                 </div>
                 
@@ -1383,34 +1505,43 @@
                 </div>
                 
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
                 </div>
                 
                 <div class="copyright">
-                    &copy; 2023 Hotel Génesis. Todos los derechos reservados. | Diseño exclusivo para experiencias únicas
+                    &copy; 2023 Hotel Genésis STB. Todos los derechos reservados. | Diseño exclusivo para experiencias únicas
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Botón volver arriba -->
-    <div class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
         <i class="fas fa-chevron-up"></i>
-    </div>
+    </button>
 
     <!-- Botón flotante de WhatsApp -->
-    <div class="whatsapp-float" id="whatsappFloat">
+    <button class="whatsapp-float" id="whatsappFloat" aria-label="Reservar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <div class="whatsapp-tooltip">Reservar por WhatsApp</div>
-    </div>
+    </button>
 
     <script>
         // Menu toggle para móviles
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Cerrar menú al hacer clic en un enlace (en móviles)
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav ul').classList.remove('show');
+                }
+            });
         });
 
         // Smooth scroll para enlaces internos
@@ -1423,9 +1554,6 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    // Cerrar menú móvil si está abierto
-                    document.querySelector('nav ul').classList.remove('show');
-                    
                     window.scrollTo({
                         top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
@@ -1477,39 +1605,43 @@
 
         // Funcionalidad de Reserva WhatsApp
         const reservaModal = document.getElementById('reservaModal');
-        const openReservaModal = document.getElementById('openReservaModal');
         const openReservaModalMobile = document.getElementById('openReservaModalMobile');
         const closeReservaModal = document.getElementById('closeReservaModal');
         const whatsappFloat = document.getElementById('whatsappFloat');
         const reservaForm = document.getElementById('reservaForm');
 
         // Abrir modal desde diferentes botones
-        openReservaModal.addEventListener('click', function(e) {
-            e.preventDefault();
-            reservaModal.style.display = 'flex';
-        });
-
         openReservaModalMobile.addEventListener('click', function(e) {
             e.preventDefault();
             reservaModal.style.display = 'flex';
-            // Cerrar menú móvil si está abierto
-            document.querySelector('nav ul').classList.remove('show');
+            document.body.style.overflow = 'hidden';
         });
 
         whatsappFloat.addEventListener('click', function(e) {
             e.preventDefault();
             reservaModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         });
 
         // Cerrar modal
         closeReservaModal.addEventListener('click', function() {
             reservaModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
 
         // Cerrar modal al hacer clic fuera
         window.addEventListener('click', function(e) {
             if (e.target === reservaModal) {
                 reservaModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && reservaModal.style.display === 'flex') {
+                reservaModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
 
@@ -1529,6 +1661,7 @@
                     `Me interesa el servicio: ${tipo}`;
                 
                 reservaModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             });
         });
 
@@ -1553,7 +1686,7 @@
             };
             
             // Crear mensaje para WhatsApp
-            const whatsappMessage = `Hola, me gustaría hacer una reserva en el Hotel Génesis:
+            const whatsappMessage = `Hola, me gustaría hacer una reserva en Hotel Genésis STB:
 
 *Información de contacto:*
 • Nombre: ${nombre}
@@ -1568,7 +1701,7 @@
 
 *Mensaje adicional:*
 ${mensaje}
-// **********************************************************************
+
 ¡Espero su respuesta!`;
             
             // Codificar mensaje para URL
@@ -1585,6 +1718,7 @@ ${mensaje}
             
             // Cerrar modal
             reservaModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
             
             // Resetear formulario
             reservaForm.reset();
@@ -1599,7 +1733,9 @@ ${mensaje}
         document.getElementById('fecha-llegada').addEventListener('change', function() {
             document.getElementById('fecha-salida').min = this.value;
         });
+
+        // Prevenir zoom en inputs en iOS
+        document.addEventListener('touchstart', function() {}, {passive: true});
     </script>
 </body>
-
 </html>
